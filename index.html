@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Flexbox/Grid layout web page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+   
+    header {
+      background: #2c3e50;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      color: white;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: #f39c12;
+    }
+    
+    main {
+      padding: 2rem;
+      min-height: 80vh;
+    }
+    
+    .content-grid {
+      display: grid;
+      gap: 2rem;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .card h2 {
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+    
+    footer {
+      background: #34495e;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    @media (max-width: 600px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (min-width: 601px) and (max-width: 900px) {
+      .content-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 901px) {
+      .content-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+    }
+    
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      color: white;
+      font-size: 1.5rem;
+    }
+    
+    @media (max-width: 600px) {
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+      }
+      
+      .nav-links {
+        display: none;
+        width: 100%;
+        text-align: center;
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo">My software knowledge index Site</div>
+      <div class="menu-toggle">☰</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="content-grid">
+      <article class="card">
+        <h2>Web Design</h2>
+        <p>Creating and styling the look and layout of websites to make them visually appealing and user-friendly.</p>
+      </article>
+      <article class="card">
+        <h2>Mobile Development</h2>
+        <p>Building apps for smartphones and tablets, either for iOS (Apple) or Android.</p>
+      </article>
+      <article class="card">
+        <h2>SEO Optimization</h2>
+        <p>Improving a website to rank higher on search engines (like Google) so more people can find it.</p>
+      </article>
+      <article class="card">
+        <h2>Cloud Solutions</h2>
+        <p>Using internet-based servers (instead of local computers) to store data, run software, and provide services (e.g., Google Drive, AWS).</p>
+      </article>
+      <article class="card">
+        <h2>UI/UX Design</h2>
+        <p>Designing how a website or app looks and ensuring the product is easy and enjoyable to use.</p>
+      </article>
+      <article class="card">
+        <h2>Digital Marketing</h2>
+        <p>Promoting products or services online using ads, social media, email, and other digital channels.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 GP Responsive Layout. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
